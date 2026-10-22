@@ -11,7 +11,7 @@ export default function HomePage() {
       <main className="pt-[76px] md:pt-[112px]">
         <Hero />
         <FeaturedProjects />
-        <Locations />
+        {/* <Locations /> */}
         <AboutUs />
         <Form />
         {/* <Services /> */}
