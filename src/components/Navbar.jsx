@@ -19,7 +19,7 @@ const LINKS = [
  * HEADER HEIGHT (keep in sync with Hero top padding):
  *   < md  : main bar only            = 80px  (5rem)
  *   >= md : utility bar 36px + 80px  = 116px (7.25rem)
- * The main bar has a FIXED height (h-20) and the logo is sized to fit
+ * The main bar has a FIXED height (h-24) and the logo is sized to fit
  * inside it, so the header never grows past these numbers.
  */
 
@@ -36,7 +36,7 @@ function Brand({ onClick, compact = false }) {
         src={logo}
         alt={BRAND.name}
         className={`w-auto max-w-[60vw] object-contain ${
-          compact ? "h-11 sm:h-12" : "h-12 sm:h-14 lg:h-16"
+          compact ? "h-14 sm:h-16" : "h-16 sm:h-18 lg:h-24"
         }`}
       />
     </Link>
@@ -187,7 +187,7 @@ export default function Navbar() {
 
         {/* MAIN NAVBAR (fixed 80px height) */}
         <div className="border-b border-gold/25 bg-[#eaf2f8]">
-          <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto flex h-23 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
             <Brand />
 
             {/* DESKTOP NAVIGATION */}
@@ -226,14 +226,14 @@ export default function Navbar() {
                 </span>
               </a>
 
-              <a
+              {/* <a
                 href="#inquiry"
                 data-testid="nav-enquire"
                 className="group inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full bg-royal px-5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(23,78,166,0.35)] transition-all duration-300 hover:bg-navy hover:text-white xl:px-6"
               >
                 Enquire
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              </a> */}
             </div>
 
             {/* MOBILE MENU BUTTON */}

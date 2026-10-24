@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function NotFoundPage() {
   return (
-    <section className="flex min-h-[70vh] items-center justify-center bg-white px-6 py-8 md:py-12">
+    <section className="flex min-h-screen items-center justify-center bg-white px-6 py-8 md:py-12">
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}

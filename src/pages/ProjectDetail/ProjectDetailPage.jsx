@@ -18,8 +18,8 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <>
-        <div className="bg-[#eaf2f8] px-5 pt-[76px] pb-8 text-center md:px-10 md:pt-[112px] md:pb-12">
+      <div className="flex min-h-screen items-center justify-center bg-[#eaf2f8] px-5 py-8 md:py-12">
+        <div className="text-center">
           <h1 className="font-heading text-3xl font-extrabold text-[#0B2A4A] md:text-5xl">Project not found</h1>
           <p className="mt-4 text-base text-[#667085] md:text-lg">
             The project you are looking for does not exist or has been removed.
@@ -32,7 +32,7 @@ export default function ProjectDetailPage() {
             Back to Projects
           </Link>
         </div>
-      </>
+      </div>
     )
   }
 

@@ -29,7 +29,7 @@ export default function Footer() {
               <img
                 src={logo}
                 alt={BRAND.name}
-                className="h-18 w-auto object-contain md:h-20"
+                className="h-24 w-auto object-contain md:h-28"
               />
             </Link>
 

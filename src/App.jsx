@@ -24,12 +24,12 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
+            {/* <Route path="/about" element={<AboutPage />} /> */}
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:id" element={<ProjectDetailPage />} />
             <Route path="/properties" element={<PropertiesPage />} />
             <Route path="/properties/:id" element={<PropertyDetailPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            {/* <Route path="/contact" element={<ContactPage />} /> */}
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
