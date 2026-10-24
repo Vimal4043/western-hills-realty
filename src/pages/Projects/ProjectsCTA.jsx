@@ -22,10 +22,10 @@ export default function ProjectsCTA() {
               Enquire about a project
             </Link>
             <Link
-              to="/faqs"
+              to="/properties"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white hover:text-[#0B2A4A]"
             >
-              Read our FAQs
+              Browse Properties
             </Link>
           </div>
         </Reveal>

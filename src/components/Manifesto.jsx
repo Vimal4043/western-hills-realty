@@ -1,5 +1,5 @@
 ﻿import { Reveal, Overline } from './Reveal.jsx'
-import { BRAND, PROJECTS, CITIES } from '../data/projects.js'
+import { BRAND, PROPERTIES, CITIES } from '../data/projects.js'
 
 const CHAPTERS = [
   {
@@ -22,7 +22,7 @@ const CHAPTERS = [
 /* The figures are derived from the published inventory so they can never
    drift away from the listings we actually offer. */
 const STATS = [
-  { v: String(PROJECTS.length), l: 'Live listings in Lonavala' },
+  { v: String(PROPERTIES.length), l: 'Live listings in Lonavala' },
   { v: String(CITIES.length), l: 'Localities we serve' },
   { v: '100%', l: 'Direct owner contact' },
 ]
@@ -32,9 +32,9 @@ export default function Manifesto() {
     <section
       id="about"
       data-testid="about-section"
-      className="scroll-mt-24 bg-[#d9e2ef] px-5 py-8 md:px-10 md:py-12"
+      className="scroll-mt-24 bg-[#d9e2ef] py-8 md:py-12"
     >
-      <div className="mx-auto grid max-w-350 gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+      <div className="mx-auto grid w-full max-w-7xl gap-16 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-8">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Reveal>
             <Overline>Our philosophy</Overline>

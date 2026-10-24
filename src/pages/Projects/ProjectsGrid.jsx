@@ -4,6 +4,7 @@ import { Reveal } from "../../components/Reveal.jsx";
 export default function ProjectsGrid({ projects }) {
   return (
     <section
+      id="projects-grid"
       data-testid="projects-grid"
       className="scroll-mt-12 bg-white px-5 py-8 md:px-10 md:py-12"
     >

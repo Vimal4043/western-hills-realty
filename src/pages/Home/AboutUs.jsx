@@ -10,7 +10,7 @@ export default function AboutUs() {
     <section
       id="about"
       data-testid="about-section"
-      className="bg-cream-dark py-8 md:py-12"
+      className="bg-[#071E35] py-8 md:py-12"
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -47,11 +47,11 @@ export default function AboutUs() {
               About Us
             </p> */}
 
-            <h2 className="max-w-xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-forest sm:text-4xl md:text-5xl">
+            <h2 className="max-w-xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
               About Western Hills Realty
             </h2>
 
-            <div className="mt-7 space-y-5 text-sm leading-7 text-sage md:text-base">
+            <div className="mt-7 space-y-5 text-sm leading-7 text-white/75 md:text-base">
               <p>
                 Western Hills Realty is a real estate consultancy based in
                 Lonavala, helping people find the right home across Lonavala,

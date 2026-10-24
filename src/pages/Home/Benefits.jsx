@@ -21,8 +21,8 @@ const BENEFITS = [
 
 export default function Benefits() {
   return (
-    <section data-testid="benefits-section" className="scroll-mt-24 bg-[#d9e2ef] px-5 py-8 text-[#0B2A4A] md:px-8 md:py-12">
-      <div className="mx-auto max-w-350">
+    <section data-testid="benefits-section" className="scroll-mt-24 bg-[#d9e2ef] py-8 text-[#0B2A4A] md:py-12">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <h2 className="max-w-5xl font-heading text-2xl font-extrabold leading-tight tracking-tight md:text-3xl">
           Why Choose Western Hills Realty
         </h2>

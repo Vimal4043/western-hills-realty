@@ -11,7 +11,7 @@ const LINKS = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Projects", to: "/projects" },
-  { label: "FAQs", to: "/faqs" },
+  { label: "Properties", to: "/properties" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -175,7 +175,7 @@ export default function Navbar() {
             </a>
 
             <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold-light lg:inline-flex">
-              {BRAND.name} â€¢ Real Estate Consultant
+              {BRAND.name} & Real Estate Consultant
             </span>
 
             <span className="hidden min-w-0 max-w-72 items-center gap-2 text-[11px] font-medium tracking-wide text-white/70 xl:inline-flex">

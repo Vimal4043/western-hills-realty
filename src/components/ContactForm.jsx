@@ -34,9 +34,9 @@ export default function ContactForm() {
     <section
       id="contact"
       data-testid="contact-section"
-      className="scroll-mt-24 bg-white px-5 py-8 md:px-10 md:py-12"
+      className="scroll-mt-24 bg-white py-8 md:py-12"
     >
-      <div className="mx-auto grid max-w-350 gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+      <div className="mx-auto grid w-full max-w-7xl gap-16 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-8">
         <div>
           <Reveal>
             <Overline>Get in touch</Overline>

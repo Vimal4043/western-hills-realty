@@ -8,9 +8,9 @@ export default function Locations() {
   return (
     <section
       data-testid="locations-section"
-      className="bg-[#d9e2ef] px-5 py-8 md:px-10 md:py-12"
+      className="border-y border-[#c7d7ea] bg-[#d9e2ef] py-12 md:py-16"
     >
-      <div className="mx-auto max-w-350">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <Overline>Where we work</Overline>
           <h2 className="mt-6 max-w-5xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#0B2A4A] md:text-5xl">
@@ -18,7 +18,7 @@ export default function Locations() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CITIES.map((c, i) => (
             <motion.div
               key={c.name}
@@ -28,9 +28,9 @@ export default function Locations() {
               transition={{ duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link
-                to={`/projects?location=${encodeURIComponent(c.filter)}`}
+                to={`/properties?location=${encodeURIComponent(c.filter)}`}
                 data-testid={`location-${c.name.toLowerCase().replace(/\s/g, '-')}`}
-                className="group relative block aspect-4/5 overflow-hidden rounded-3xl"
+                className="group relative block aspect-4/5 overflow-hidden rounded-3xl ring-1 ring-[#0B2A4A]/10"
               >
                 <img
                   src={c.image}

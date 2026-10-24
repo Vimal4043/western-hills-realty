@@ -2,29 +2,25 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { BRAND, PROJECTS } from "../../data/projects.js";
+import { BRAND, PROPERTIES } from "../../data/projects.js";
 
 /* ============================================================
    PROPERTY SHOWCASE
-   Presents the property types Western Hills Realty deals in, so
-   the homepage stays accurate without inventing project names or
-   prices that have not been confirmed by the client.
-
-   The cards are derived from the published listings so the
-   homepage can never drift away from the actual inventory.
+   Presents the individual properties Western Hills Realty lists,
+   so the homepage stays accurate to the actual inventory.
    ============================================================ */
 
-const SHOWCASE = PROJECTS.map((project) => ({
-  id: project.id,
-  title: project.title,
-  location: project.localities.join(" Â· "),
-  descriptor: project.tagline,
-  image: project.images[0],
-  highlights: project.highlights.slice(0, 3),
-  type: project.type,
+const SHOWCASE = PROPERTIES.map((property) => ({
+  id: property.id,
+  title: property.unitNumber || property.title,
+  location: property.location,
+  descriptor: `${property.type} · ${property.listingType}`,
+  image: property.image,
+  price: property.price,
+  type: property.type,
 }));
 
-export default function FeaturedProjects() {
+export default function FeaturedProperties() {
   return (
     <section
       id="featured"
@@ -37,11 +33,11 @@ export default function FeaturedProjects() {
         ===================================================== */}
         <div className="text-center">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
-            Our Portfolio
+            Our Properties
           </p>
 
           <h2 className="mx-auto mt-3 max-w-4xl font-heading text-2xl font-extrabold leading-tight tracking-tight text-[#0B2A4A] md:text-4xl">
-            Property we help you find
+            Properties we help you find
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#0B2A4A]/65 md:text-base">
@@ -69,7 +65,7 @@ export default function FeaturedProjects() {
               }}
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#c7d7ea] bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(11,42,74,0.12)]"
             >
-              <div className="relative aspect-4/3 overflow-hidden">
+              <div className="relative aspect-3/4 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -94,22 +90,24 @@ export default function FeaturedProjects() {
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {item.highlights.map((highlight) => (
-                    <span
-                      key={highlight}
-                      className="rounded-full border border-[#c7d7ea] px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
-                    >
-                      {highlight}
-                    </span>
-                  ))}
+                  <span
+                    className="rounded-full border border-[#c7d7ea] px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
+                  >
+                    {item.type}
+                  </span>
+                  <span
+                    className="rounded-full border border-[#c7d7ea] px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
+                  >
+                    {item.price}
+                  </span>
                 </div>
 
                 <div className="mt-auto pt-5">
                   <Link
-                    to={`/projects/${item.id}`}
+                    to={`/properties/${item.id}`}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#071E35] transition-colors duration-300 hover:text-[#3b82f6]"
                   >
-                    View project
+                    View property
 
                     <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
@@ -124,7 +122,7 @@ export default function FeaturedProjects() {
         ===================================================== */}
         <div className="mt-10 flex flex-col items-center gap-3 md:mt-12">
           <Link
-            to="/projects"
+            to="/properties"
             data-testid="featured-view-all"
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#0B2A4A]/15 bg-[#0B2A4A] px-7 py-3.5 text-sm font-semibold text-white"
           >
@@ -132,7 +130,7 @@ export default function FeaturedProjects() {
             <span className="absolute inset-y-0 left-0 w-[115%] translate-x-[-105%] -skew-x-12 rounded-full bg-[#3b82f6] transition-transform duration-500 ease-out group-hover:translate-x-[-5%]" />
 
             <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-[#0B2A4A]">
-              View all projects
+              View all properties
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </Link>

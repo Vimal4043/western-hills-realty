@@ -25,9 +25,9 @@ export default function Services() {
     <section
       id="services"
       data-testid="services-section"
-      className="scroll-mt-24 bg-[#eaf2f8] px-5 py-8 md:px-10 md:py-12"
+      className="scroll-mt-24 bg-[#eaf2f8] py-8 md:py-12"
     >
-      <div className="mx-auto max-w-350">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal>
           <Overline>What we do</Overline>
           <h2 className="mt-6 max-w-3xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#0B2A4A] md:text-5xl">
