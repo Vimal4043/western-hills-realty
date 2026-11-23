@@ -63,7 +63,7 @@ export default function FeaturedProperties() {
                 delay: (i % 4) * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#c7d7ea] bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(11,42,74,0.12)]"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(11,42,74,0.12)]"
             >
               <div className="relative aspect-3/4 overflow-hidden">
                 <img
@@ -85,18 +85,18 @@ export default function FeaturedProperties() {
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-sm leading-6 text-[#667085]">
+                <p className="mt-2 text-sm leading-6 text-sage">
                   {item.descriptor}
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span
-                    className="rounded-full border border-[#c7d7ea] px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
+                    className="rounded-full border border-line px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
                   >
                     {item.type}
                   </span>
                   <span
-                    className="rounded-full border border-[#c7d7ea] px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
+                    className="rounded-full border border-line px-3 py-1 text-xs font-semibold text-[#0B2A4A]"
                   >
                     {item.price}
                   </span>
@@ -105,7 +105,7 @@ export default function FeaturedProperties() {
                 <div className="mt-auto pt-5">
                   <Link
                     to={`/properties/${item.id}`}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#071E35] transition-colors duration-300 hover:text-[#3b82f6]"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest-deep transition-colors duration-300 hover:text-gold"
                   >
                     View property
 
@@ -127,7 +127,7 @@ export default function FeaturedProperties() {
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#0B2A4A]/15 bg-[#0B2A4A] px-7 py-3.5 text-sm font-semibold text-white"
           >
             {/* Yellow hover sweep */}
-            <span className="absolute inset-y-0 left-0 w-[115%] translate-x-[-105%] -skew-x-12 rounded-full bg-[#3b82f6] transition-transform duration-500 ease-out group-hover:translate-x-[-5%]" />
+            <span className="absolute inset-y-0 left-0 w-[115%] translate-x-[-105%] -skew-x-12 rounded-full bg-gold transition-transform duration-500 ease-out group-hover:translate-x-[-5%]" />
 
             <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-[#0B2A4A]">
               View all properties
@@ -135,7 +135,7 @@ export default function FeaturedProperties() {
             </span>
           </Link>
 
-          {/* <p className="text-xs text-[#667085]">
+          {/* <p className="text-xs text-sage">
             Prefer to talk first? Call{" "}
             <a
               href={`tel:${BRAND.phone.replace(/\s+/g, "")}`}
