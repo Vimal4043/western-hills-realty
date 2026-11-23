@@ -135,7 +135,7 @@ export default function FeaturedProperties() {
             </span>
           </Link>
 
-          <p className="text-xs text-[#667085]">
+          {/* <p className="text-xs text-[#667085]">
             Prefer to talk first? Call{" "}
             <a
               href={`tel:${BRAND.phone.replace(/\s+/g, "")}`}
@@ -143,7 +143,7 @@ export default function FeaturedProperties() {
             >
               {BRAND.phone}
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </section>
