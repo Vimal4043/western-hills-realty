@@ -2,12 +2,12 @@ import { matchesLocation } from "./locations.js";
 
 export { normalizeLocation, splitLocality, matchesLocation } from "./locations.js";
 
-const IMAGES = Object.values(import.meta.glob("../assets/properties/LONAVALA/*", {
+const LuxuryVilla = Object.values(import.meta.glob("../assets/properties/LuxuryVilla/*", {
   eager: true,
   query: "?url",
   import: "default",
 })).sort();
-const coverImage = IMAGES[0];
+const LuxuryVillaImage = LuxuryVilla[0];
 
 export const BRAND = {
   name: "Western Hills Realty",
@@ -45,8 +45,8 @@ export const PROPERTIES = [
     bathrooms: 4,
     area: "Available on request",
     // Listing and featured cards use this cover. PropertyDetailPage alone renders gallery.
-    image: coverImage,
-    gallery: IMAGES,
+    image: LuxuryVillaImage,
+    gallery: LuxuryVilla,
     description: "A villa property in Lonavala. Contact Western Hills Realty for more information.",
   },
 ];

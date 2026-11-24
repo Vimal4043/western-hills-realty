@@ -70,7 +70,7 @@ export default function AboutUs() {
               <p>
                 We also support property owners and sellers in listing their
                 properties, from photography and pricing to buyer coordination
-                and site visits. Led by {BRAND.owner}, the process stays
+                and site visits. The process stays
                 personal, direct and easy to follow from first enquiry to
                 handover.
               </p>

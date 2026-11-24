@@ -177,14 +177,14 @@ export default function Hero() {
             </p>
 
             {/* HEADING */}
-            <h1 className="mt-4 max-w-[680px] font-heading text-[1.75rem] leading-[1.1] font-semibold tracking-tight text-white min-[380px]:text-[2rem] sm:mt-5 sm:text-4xl md:text-[2.6rem] lg:text-5xl">
+            <h1 className="mt-4 max-w-170 font-heading text-[1.75rem] leading-[1.1] font-semibold tracking-tight text-white min-[380px]:text-[2rem] sm:mt-5 sm:text-4xl md:text-[2.6rem] lg:text-5xl">
               Find your home in{" "}
               <span className="text-gold">the Lonavala hills</span>
             </h1>
 
             {/* DESCRIPTION */}
             <p className="mt-4 max-w-[560px] text-sm leading-6 text-white/80 sm:mt-5 sm:text-base sm:leading-7 lg:leading-8">
-              {BRAND.name} is a real estate consultancy led by {BRAND.owner},
+              {BRAND.name} is a real estate consultancy,
               connecting families and investors with verified apartments, shops
               and offices across Lonavala, Valvan, Khandala and Malavli — with clear
               pricing and guidance at every step.

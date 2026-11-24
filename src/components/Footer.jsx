@@ -34,8 +34,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
-              {BRAND.name} is a real estate consultancy led by{" "}
-              <span className="font-semibold text-white/90">{BRAND.owner}</span>.
+              {BRAND.name} is a real estate consultancy.
               We help families and investors find verified homes, shops and
               offices across Lonavala and the wider Pune hills — with honest
               guidance from the first site visit to key handover.
@@ -47,7 +46,7 @@ export default function Footer() {
             >
               <Phone className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
 
-              Talk to {BRAND.owner}
+              Call us at {BRAND.phone}
             </a>
 
             {/* <div className="mt-6 flex items-center gap-3">
