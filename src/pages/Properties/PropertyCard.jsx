@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 
 export default function PropertyCard({ property, index = 0 }) {
   const image = property.image || "";
+  const category = property.subtype || property.type;
+
+  let areaLabel = "";
+  if (property.subtype === "Factory") {
+    const parts = [];
+    if (property.plotArea) parts.push(`Plot ${property.plotArea}`);
+    if (property.builtUpArea) parts.push(`Built-up ${property.builtUpArea}`);
+    areaLabel = parts.join(" · ");
+  } else if (property.bedrooms) {
+    areaLabel = `${property.bedrooms} BHK`;
+  }
 
   return (
     <motion.div
@@ -55,8 +66,14 @@ export default function PropertyCard({ property, index = 0 }) {
             {property.unitNumber || property.title}
           </h3>
 
+          {areaLabel && (
+            <p className="mt-2 text-sm text-[#667085]">
+              {areaLabel}
+            </p>
+          )}
+
           <p className="mt-3 font-heading text-xl font-extrabold tracking-tight text-[#071E35]">
-            {property.type}
+            {category}
           </p>
 
           <div className="mt-5 flex items-center justify-between border-t border-[#c7d7ea] pt-4">

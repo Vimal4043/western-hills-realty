@@ -10,15 +10,18 @@ import { BRAND, PROPERTIES } from "../../data/projects.js";
    so the homepage stays accurate to the actual inventory.
    ============================================================ */
 
-const SHOWCASE = PROPERTIES.map((property) => ({
-  id: property.id,
-  title: property.unitNumber || property.title,
-  location: property.location,
-  descriptor: `${property.type} · ${property.listingType}`,
-  image: property.image,
-  price: property.price,
-  type: property.type,
-}));
+const SHOWCASE = PROPERTIES.map((property) => {
+  const category = property.subtype || property.type;
+  return {
+    id: property.id,
+    title: property.unitNumber || property.title,
+    location: property.location,
+    descriptor: `${category} · ${property.listingType}`,
+    image: property.image,
+    price: property.price,
+    type: category,
+  };
+});
 
 export default function FeaturedProperties() {
   return (

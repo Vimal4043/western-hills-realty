@@ -1,8 +1,44 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, MapPin } from "lucide-react";
+import {
+  ArrowLeft,
+  Bath,
+  Bed,
+  Building,
+  Check,
+  CheckCheck,
+  Droplets,
+  Factory,
+  Home,
+  MapPin,
+  PlugZap,
+  Ruler,
+  Wifi,
+} from "lucide-react";
 import { Reveal } from "../../components/Reveal.jsx";
-import { PROJECTS, PROPERTIES } from "../../data/projects.js";
+import {
+  PLACEHOLDER_IMAGE,
+  PROJECTS,
+  PROPERTIES,
+} from "../../data/projects.js";
+
+const ICONS = {
+  bedrooms: <Bed className="h-4 w-4" />,
+  bathrooms: <Bath className="h-4 w-4" />,
+  plotArea: <Ruler className="h-4 w-4" />,
+  carpetArea: <Home className="h-4 w-4" />,
+  builtUpArea: <Building className="h-4 w-4" />,
+  category: <Building className="h-4 w-4" />,
+  listingType: <Home className="h-4 w-4" />,
+  legalStatus: <CheckCheck className="h-4 w-4" />,
+  gst: <Droplets className="h-4 w-4" />,
+  airConditioning: <Wifi className="h-4 w-4" />,
+  utilities: <PlugZap className="h-4 w-4" />,
+  possession: <Home className="h-4 w-4" />,
+  amenities: <Check className="h-4 w-4" />,
+  facilities: <Factory className="h-4 w-4" />,
+  suitableFor: <Building className="h-4 w-4" />,
+};
 
 export default function PropertyDetailPage() {
   const { id } = useParams();
@@ -10,10 +46,77 @@ export default function PropertyDetailPage() {
   const project =
     property && PROJECTS.find((p) => p.id === property.projectId);
 
-  const [selectedImage, setSelectedImage] = useState(
-    property?.image || ""
-  );
-  const gallery = property?.gallery || [property?.image].filter(Boolean);
+  const category = property.subtype || property.type;
+  const coverImage = property.image || PLACEHOLDER_IMAGE;
+  const gallery = property?.gallery?.length
+    ? property.gallery
+    : [coverImage].filter(Boolean);
+
+  const [selectedImage, setSelectedImage] = useState(coverImage);
+
+  /* Scalar specification rows to render, skipping anything not provided. */
+  const specRows = [
+    property.type && {
+      key: "category",
+      label: "Property Category",
+      value: category,
+    },
+    property.listingType && {
+      key: "listingType",
+      label: "Listing Type",
+      value: property.listingType,
+    },
+    property.bedrooms && {
+      key: "bedrooms",
+      label: "Bedrooms",
+      value: `${property.bedrooms} BHK`,
+    },
+    property.bathrooms && {
+      key: "bathrooms",
+      label: "Bathrooms",
+      value: String(property.bathrooms),
+    },
+    property.plotArea && {
+      key: "plotArea",
+      label: "Plot Area",
+      value: property.plotArea,
+    },
+    property.carpetArea && {
+      key: "carpetArea",
+      label: "Carpet Area",
+      value: property.carpetArea,
+    },
+    property.builtUpArea && {
+      key: "builtUpArea",
+      label: "Built-up Area",
+      value: property.builtUpArea,
+    },
+    property.legalStatus && {
+      key: "legalStatus",
+      label: "Legal Status",
+      value: property.legalStatus,
+    },
+    property.gst && {
+      key: "gst",
+      label: "GST",
+      value: property.gst,
+    },
+    property.airConditioning && {
+      key: "airConditioning",
+      label: "Air Conditioning",
+      value: property.airConditioning,
+    },
+    property.utilities?.length && {
+      key: "utilities",
+      label: "Utilities",
+      value: property.utilities.join(", "),
+    },
+    property.possession && {
+      key: "possession",
+      label: "Possession",
+      value: property.possession,
+    },
+  ].filter(Boolean);
 
   if (!property) {
     return (
@@ -47,10 +150,15 @@ export default function PropertyDetailPage() {
               <div className="relative aspect-video bg-[#d9e2ef]">
                 <img
                   src={selectedImage}
-                  alt={`${property.unitNumber || property.title}, ${property.location}`}
+                  alt={`${property.title || property.unitNumber}, ${property.location}`}
                   className="h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
+                {!property.image && (
+                  <div className="absolute inset-0 flex items-center justify-center text-[#667085]">
+                    No images available
+                  </div>
+                )}
                 {property.listingType && (
                   <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-[#0B2A4A]">
                     {property.listingType}
@@ -100,8 +208,14 @@ export default function PropertyDetailPage() {
                     </span>
                   )}
 
-                  <h2 className="mt-5 font-heading text-4xl font-extrabold leading-tight tracking-tight text-[#0B2A4A] md:text-5xl">
-                    {property.unitNumber || property.title}
+                  {property.tagline && (
+                    <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#3b82f6]">
+                      {property.tagline}
+                    </p>
+                  )}
+
+                  <h2 className="mt-4 font-heading text-4xl font-extrabold leading-tight tracking-tight text-[#0B2A4A] md:text-5xl">
+                    {property.title || property.unitNumber}
                   </h2>
 
                   <p className="mt-4 flex items-center gap-2 text-base text-[#667085] md:text-lg">
@@ -123,20 +237,145 @@ export default function PropertyDetailPage() {
                     {property.price || "Price on request"}
                   </p>
 
-                  <div className="mt-4 grid gap-2 sm:grid-cols-2 text-sm font-semibold text-[#071E35]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#071E35]">{property.type}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {property.bedrooms > 0 && (
-                        <>
-                          <span className="text-[#667085]">{property.bedrooms} BHK</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
+
+              {/* Property specifications */}
+              {specRows.length && (
+                <section
+                  data-testid="property-specifications"
+                  className="mt-10 scroll-mt-12 bg-[#d9e2ef] px-5 py-8 md:px-10 md:py-12"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <div className="mb-6">
+                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#071E35]">
+                        Property Details
+                      </p>
+                      <h3 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#0B2A4A] md:text-4xl">
+                        Specification
+                      </h3>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                      {specRows.map((row) => (
+                        <div
+                          key={row.key}
+                          className="h-full rounded-2xl border border-[#c7d7ea] bg-white p-5"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#3b82f6]/10 text-[#0B2A4A]">
+                              {ICONS[row.key]}
+                            </div>
+                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#071E35]">
+                              {row.label}
+                            </p>
+                          </div>
+                          <p className="mt-3 text-base font-bold leading-6 text-[#0B2A4A]">
+                            {row.value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              {/* Amenities (villas) */}
+              {property.amenities?.length && (
+                <section
+                  data-testid="property-amenities"
+                  className="mt-10 scroll-mt-12 bg-white px-5 py-8 md:px-10 md:py-12"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <div className="mb-6">
+                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#071E35]">
+                        Amenities
+                      </p>
+                      <h3 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#0B2A4A] md:text-4xl">
+                        Amenities
+                      </h3>
+                    </div>
+
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                      {property.amenities.map((amenity, index) => (
+                        <Reveal key={amenity} delay={index * 0.03}>
+                          <div className="flex items-center gap-4 rounded-2xl border border-[#c7d7ea] bg-white p-5">
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#3b82f6] text-[#0B2A4A]">
+                              {ICONS.amenities}
+                            </span>
+                            <p className="text-sm font-semibold text-[#0B2A4A]">
+                              {amenity}
+                            </p>
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              {/* Facilities (factories) */}
+              {property.facilities?.length && (
+                <section
+                  data-testid="property-facilities"
+                  className="mt-10 scroll-mt-12 bg-[#d9e2ef] px-5 py-8 md:px-10 md:py-12"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <div className="mb-6">
+                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#071E35]">
+                        Facilities
+                      </p>
+                      <h3 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#0B2A4A] md:text-4xl">
+                        Facilities
+                      </h3>
+                    </div>
+
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                      {property.facilities.map((facility, index) => (
+                        <Reveal key={facility} delay={index * 0.03}>
+                          <div className="flex items-center gap-4 rounded-2xl border border-[#c7d7ea] bg-white p-5">
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#3b82f6] text-[#0B2A4A]">
+                              {ICONS.facilities}
+                            </span>
+                            <p className="text-sm font-semibold text-[#0B2A4A]">
+                              {facility}
+                            </p>
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              {/* Suitable for (factories) */}
+              {property.suitableFor?.length && (
+                <section
+                  data-testid="property-suitable-for"
+                  className="mt-10 scroll-mt-12 bg-white px-5 py-8 md:px-10 md:py-12"
+                >
+                  <div className="mx-auto max-w-6xl">
+                    <div className="mb-6">
+                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#071E35]">
+                        Suitable For
+                      </p>
+                      <h3 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#0B2A4A] md:text-4xl">
+                        Ideal For
+                      </h3>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      {property.suitableFor.map((item, index) => (
+                        <Reveal key={item} delay={index * 0.03}>
+                          <div className="inline-flex items-center gap-2 rounded-full border border-[#c7d7ea] bg-[#d9e2ef] px-5 py-3 text-sm font-semibold text-[#0B2A4A]">
+                            {ICONS.suitableFor} {item}
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
             </Reveal>
           </div>
         </section>

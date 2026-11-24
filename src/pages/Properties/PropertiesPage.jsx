@@ -28,8 +28,10 @@ export default function PropertiesPage() {
 
   const filteredProperties = PROPERTIES.filter((property) => {
     if (filters.type) {
+      const query = filters.type.toLowerCase();
       const propertyType = (property.type || "").toLowerCase();
-      if (!propertyType.includes(filters.type.toLowerCase())) return false;
+      const propertySubtype = (property.subtype || "").toLowerCase();
+      if (!propertyType.includes(query) && !propertySubtype.includes(query)) return false;
     }
 
     if (filters.listingType) {
@@ -47,7 +49,9 @@ export default function PropertiesPage() {
       const query = filters.keyword.trim().toLowerCase();
       const searchableText = [
         property.unitNumber,
+        property.title,
         property.type,
+        property.subtype,
         property.location,
         property.listingType,
         property.price,
