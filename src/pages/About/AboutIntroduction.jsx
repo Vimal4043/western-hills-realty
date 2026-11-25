@@ -1,7 +1,7 @@
 import { BRAND } from "../../data/projects.js";
 import { Reveal } from "../../components/Reveal.jsx";
 import { Link } from "react-router-dom";
-import hero from "../../assets/hero.jpeg";
+import logo from "../../assets/logo.png";
 
 export default function AboutIntroduction() {
   return (
@@ -51,7 +51,7 @@ export default function AboutIntroduction() {
               <div className="ml-0 mb-3 w-full max-w-sm md:float-right md:mx-0 md:ml-7 md:max-w-none md:w-[38%] lg:w-[40%]">
                 <div className="overflow-hidden rounded-xl border-2 border-gold">
                   <img
-                    src={hero}
+                    src={logo}
                     alt="Western Hills Realty"
                     className="block aspect-602/589 w-full object-cover"
                   />
